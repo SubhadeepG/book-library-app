@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+header {
+    background-color: black;
+    color: white;
+    padding: 25px;
+}
+#add-book-button {
+  font-size: 1.5rem;
+  padding: 10px 25px;
+  width: 200px;
+  margin: 20px;
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  grid-template-rows: repeat(2, 300px);
+  column-gap: 20px;
+  row-gap: 50px;
+}
+.card {
+  display: flex;
+  flex-direction:column;
+  gap: 20px;
+  align-items: center;
+  background-color: peachpuff;
+  border: 2px solid red;
+  border-radius: 25px;
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+}
+.read-card {
+  border: 2px solid black;
+  width: 120px;
+  background-color: rgb(62, 206, 62);
+  padding: 5px;
+}
+.remove-btn {
+  border: 2px solid black;
+  width: 120px;
+  background-color: gray;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+}
+.remove-btn:hover {
+  background-color: orange;
+  color: black;
+}
