@@ -47,6 +47,10 @@ header {
   background-color: rgb(62, 206, 62);
   padding: 5px;
 }
+.unread {
+  background-color: red;
+  color: white;
+}
 .remove-btn {
   border: 2px solid black;
   width: 120px;
