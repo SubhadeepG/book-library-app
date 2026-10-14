@@ -3,6 +3,9 @@
   margin: 0;
   padding: 0;
 }
+body {
+  background-color: #e2e8f0;
+}
 header {
     background-color: black;
     color: white;
@@ -55,4 +58,49 @@ header {
 .remove-btn:hover {
   background-color: orange;
   color: black;
+}
+.form-container {
+  position: absolute;
+  width: 300px;
+  background-color: white;
+  /* top: 0; */
+  /* left: 100; */
+  bottom: 300px;
+  left: 300px;
+  padding: 30px;
+}
+.form-container h1 {
+  margin-bottom: 20px;
+}
+#close-btn {
+  float: right;
+  font-size: 1.0rem;
+  /* width: 50px; */
+  background: none;
+  border: none;
+  color: gray;
+  cursor: pointer;
+}
+#close-btn:hover {
+  color: black;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+form input {
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+.form-container button {
+  font-size: 1.2rem;
+  padding: 5px 20px;
+  cursor: pointer;
+}
+.read-checkbox {
+  display: flex;
+  margin: 20px 0;
+  font-size: 1.5rem;
 }
