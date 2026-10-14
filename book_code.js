@@ -1,4 +1,7 @@
-const container = document.querySelector(".container")
+const container = document.querySelector(".container");
+const add_book_button = document.querySelector("#book-button");
+const close_book_button = document.querySelector("#close-btn");
+const form_container = document.querySelector(".form-container");
 
 const myLibrary = []
 
@@ -53,6 +56,16 @@ function displayBooks() {
     }
 }
 
+function open_form() {
+    form_container.classList.add("open");
+}
+
+function close_form() {
+    form_container.classList.remove("open");
+}
+
 addBookToLibrary("The Kite Runner", "Khajit", 300);
 addBookToLibrary("Quantum Mechanics", "Bohr", 255);
 displayBooks();
+add_book_button.addEventListener("click", open_form);
+close_book_button.addEventListener("click", close_form);
