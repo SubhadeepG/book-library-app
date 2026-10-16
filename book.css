@@ -46,6 +46,7 @@ header {
   width: 120px;
   background-color: rgb(62, 206, 62);
   padding: 5px;
+  cursor: pointer;
 }
 .unread {
   background-color: red;

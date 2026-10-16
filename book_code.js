@@ -56,10 +56,25 @@ function displayBooks() {
         }
         card.appendChild(read_btn);
 
+        read_btn.addEventListener("click", function() {
+            if(book.isRead) {
+                book.isRead = false;
+                read_btn.classList.add("unread");
+            }
+            else {
+                book.isRead = true;
+                read_btn.classList.remove("unread");
+            }
+        });
+
         const remove_btn = document.createElement("button");
         remove_btn.textContent = "Remove";
         remove_btn.classList.add("remove-btn");
         card.appendChild(remove_btn);
+
+        remove_btn.addEventListener("click", function() {
+            card.remove();
+        });
 
         container.appendChild(card);
 
@@ -79,13 +94,13 @@ function add_book(event) {
     const title = document.getElementById("book_title").value;
     const author = document.getElementById("author_name").value;
     const pages = document.getElementById("number_of_pages").value;
-    const read_checkbox = document.getElementById("read_checkbox").value;
+    const read_checkbox = document.getElementById("read_checkbox").checked;
     console.log("Adding book to library.");
     console.log(title);
     console.log(author);
     console.log(pages);
-    console.log(read_checkbox);
-    addBookToLibrary(title, author, pages, false);
+    console.log("Checkbox value: " + read_checkbox);
+    addBookToLibrary(title, author, pages, read_checkbox);
     displayBooks();
     close_form();
 }
