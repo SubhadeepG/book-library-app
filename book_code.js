@@ -29,6 +29,10 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 function renderBooks() {
+    // first remove the books already present
+    const books = document.querySelectorAll(".card");
+    books.forEach(book => book.remove());
+
     for (const book of myLibrary) {
 
         const card = document.createElement("div");
