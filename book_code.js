@@ -28,29 +28,27 @@ function addBookToLibrary(title, author, pages, isRead) {
   myLibrary.push(book1);
 }
 
-function displayBooks() {
+function renderBooks() {
     for (const book of myLibrary) {
-        if(book.isDisplayed) {
-            continue;
-        }
-        console.log(book.title + "\n");
 
         const card = document.createElement("div");
+        const heading = document.createElement("h1");
+        const author = document.createElement("h3");
+        const pages = document.createElement("p");
+        const read_btn = document.createElement("button");
+        const remove_btn = document.createElement("button");
+
         card.classList.add("card");
 
-        const heading = document.createElement("h1");
         heading.textContent = book.title;
         card.appendChild(heading);
 
-        const author = document.createElement("h3");
         author.textContent = book.author;
         card.appendChild(author);
 
-        const pages = document.createElement("p");
         pages.textContent = book.pages + "pg";
         card.appendChild(pages);
 
-        const read_btn = document.createElement("button");
         read_btn.textContent = "Read";
         read_btn.classList.add("read-card");
         if (!book.isRead) {
@@ -69,18 +67,19 @@ function displayBooks() {
             }
         });
 
-        const remove_btn = document.createElement("button");
         remove_btn.textContent = "Remove";
         remove_btn.classList.add("remove-btn");
+        remove_btn.setAttribute("id", "remove-btn");
         card.appendChild(remove_btn);
 
         remove_btn.addEventListener("click", function() {
-            card.remove();
+            card.remove(); // remove from the DOM
+            // remove from the array myLibrary
+            myLibrary.splice(myLibrary.indexOf(book), 1);
+            update_local_storage();
         });
 
         container.appendChild(card);
-
-        book.isDisplayed = true;
     }
 }
 
@@ -106,7 +105,7 @@ function add_book(event) {
     console.log("Adding book to library.");
     console.log(title + " by " + author);
     addBookToLibrary(title, author, pages, read_checkbox);
-    displayBooks();
+    renderBooks();
     close_form();
     update_local_storage();
 }
@@ -116,4 +115,4 @@ close_book_button.addEventListener("click", close_form);
 submit_button.addEventListener("click", add_book);
 
 // addBookToLibrary("The Kite Runner", "Khajit", 300, true);
-displayBooks();
+renderBooks();
