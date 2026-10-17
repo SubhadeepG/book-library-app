@@ -4,7 +4,9 @@ const submit_button = document.querySelector("#submit-btn");
 const close_book_button = document.querySelector("#close-btn");
 const form_container = document.querySelector(".form-container");
 
-const myLibrary = []
+// Retrieve and convert the string back into a JavaScript array
+// If nothing is stored yet, fall back to an empty array ([])
+let myLibrary = JSON.parse(localStorage.getItem("myBooks")) || [];
 
 function Book(title, author, pages) {
     this.title = title;
@@ -90,25 +92,28 @@ function close_form() {
     form_container.classList.remove("open");
 }
 
+function update_local_storage() {
+    // convert array to an JSON string and save it
+    localStorage.setItem("myBooks", JSON.stringify(myLibrary));
+    console.log("Updated local storage.")
+}
+
 function add_book(event) {
     const title = document.getElementById("book_title").value;
     const author = document.getElementById("author_name").value;
     const pages = document.getElementById("number_of_pages").value;
     const read_checkbox = document.getElementById("read_checkbox").checked;
     console.log("Adding book to library.");
-    console.log(title);
-    console.log(author);
-    console.log(pages);
-    console.log("Checkbox value: " + read_checkbox);
+    console.log(title + " by " + author);
     addBookToLibrary(title, author, pages, read_checkbox);
     displayBooks();
     close_form();
+    update_local_storage();
 }
-
-addBookToLibrary("The Kite Runner", "Khajit", 300, true);
 
 add_book_button.addEventListener("click", open_form);
 close_book_button.addEventListener("click", close_form);
 submit_button.addEventListener("click", add_book);
 
+// addBookToLibrary("The Kite Runner", "Khajit", 300, true);
 displayBooks();
